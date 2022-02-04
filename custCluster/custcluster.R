@@ -26,7 +26,7 @@ cor(data, method = "pearson")
 
 summary(data)
 
-data.scale = scale(data[-1])
+data.scale = scale(data[-1], scale = FALSE)
 
 source("~/Downloads/online-retail-segmentation/multikmeans.r")
 err = multiKmeans(data.scale, 1, 15, 1000)
