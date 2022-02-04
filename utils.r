@@ -21,8 +21,6 @@ detect_outlier <- function(x) {
   x > Quantile3 + (IQR*1.5) | x < Quantile1 - (IQR*1.5)
 }
 
-dim(data[!detect_outlier(data[["revenue"]]), ])
-
 
 # create remove outlier function
 remove_outlier <- function(dataframe,
