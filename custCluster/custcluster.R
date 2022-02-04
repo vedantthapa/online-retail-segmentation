@@ -1,6 +1,8 @@
 library(ggplot2) 
 library(GGally)
 library(dplyr)
+library(caret)
+
 
 data = read.csv2("~/Downloads/online-retail-segmentation/custCluster/custcluster.csv", 
                  col.names = c("customerID", "prod_purchased", "basket", "revenue", "num_visits", "avg_spend"),
@@ -10,11 +12,12 @@ head(data)
 # checking for missing values
 sum(is.na(data))
 
+# convert columns to numeric
 sapply(data, class)
 cols.num = c("revenue", "avg_spend")
 data[cols.num] = sapply(data[cols.num],as.numeric)
-
 sapply(data, class)
+
 head(data)
 
 ggpairs(data[which(names(data) != "customerID")], 
@@ -22,15 +25,18 @@ ggpairs(data[which(names(data) != "customerID")],
         lower = list(continuous = "points"), 
         title = "Products before outlier removal")
 
-cor(data, method = "pearson")
+pp = preProcess(data[-1], method = "range")
+data.scale = predict(pp, as.data.frame(data[-1]))
 
-summary(data)
+head(data.scale)
+summary(data.scale)
 
-data.scale = scale(data[-1], scale = FALSE)
+cor(data.scale, method = "pearson")
+
 
 source("~/Downloads/online-retail-segmentation/multikmeans.r")
 err = multiKmeans(data.scale, 1, 15, 1000)
-plot(err)
+plot(err, pch=19, type='b')
 
 set.seed(42)
 k4 = kmeans(data.scale, centers = 4, iter.max = 1000)
