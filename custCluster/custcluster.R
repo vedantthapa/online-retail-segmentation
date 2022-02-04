@@ -9,6 +9,9 @@ data = read.csv2("~/Downloads/online-retail-segmentation/custCluster/custcluster
                  stringsAsFactors = FALSE)
 head(data)
 
+# keep only revenue > 0
+data = data[data$revenue > 0, ]
+
 # checking for missing values
 sum(is.na(data))
 
@@ -26,22 +29,19 @@ ggpairs(data[which(names(data) != "customerID")],
         title = "Products before outlier removal")
 
 dim(data)
-# data = data[!data$customerID %in% c(17450, 18102), ]
-# dim(data)
 
-ggpairs(data[which(names(data) != "customerID")], 
+data.transformed = log(1 + data)
+ggpairs(data.transformed[which(names(data.transformed) != "customerID")], 
         upper = list(continuous = ggally_points), 
         lower = list(continuous = "points"), 
         title = "Products after outlier removal")
 
 # centering data
-pp = preProcess(data[-1], method = c("center"))
+pp = preProcess(data.transformed[-1], method = c("center", "scale"))
 data.scale = predict(pp, as.data.frame(data[-1]))
 
 summary(data.scale)
 
-# check correlation
-cor(data.scale, method = "pearson")
 
 # plot elbow
 err = multiKmeans(data.scale, 1, 15, 1000)
@@ -49,7 +49,7 @@ plot(err, pch=19, type='b')
 
 # run kmeans with optimal k
 set.seed(42)
-k4 = kmeans(data.scale, centers = 5, iter.max = 1000)
+k4 = kmeans(data.scale, centers = 4, iter.max = 1000)
 k4$size
 
 data %>%
