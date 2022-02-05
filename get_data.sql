@@ -14,3 +14,14 @@ GROUP BY CustomerID
 ORDER BY 1;
 
 -- Product data
+SELECT StockCode,
+    COUNT(DISTINCT CustomerID) as CUST_COUNT,
+    SUM(Quantity*UnitPrice) as TOTALPRODREVENUE,
+    COUNT(DISTINCT InvoiceNo) as POPULARITY,
+    (SELECT SUM(Quantity*UnitPrice)/SUM(Quantity)) as AVG_REVENUE
+FROM OnlineRetail
+WHERE Country='United Kingdom'
+    AND InvoiceNo != 0
+    AND CustomerID != 0
+GROUP BY StockCode
+ORDER BY TOTALPRODREVENUE DESC;
