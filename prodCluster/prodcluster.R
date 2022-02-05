@@ -84,6 +84,10 @@ data[-1] %>%
 fviz_cluster(k4, data = data.scale)
 plot(data.scale, col=k4$cluster)
 
+head(data)
+data$cluster = k4$cluster
+write.csv(data, "~/Downloads/online-retail-segmentation/prodCluster/Cluster.csv")
+
 # fviz_cluster(k4, data = data.scale)
 
 # normalization

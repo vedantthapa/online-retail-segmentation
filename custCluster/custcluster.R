@@ -7,7 +7,7 @@ library('ggrepel')
 
 source("~/Downloads/online-retail-segmentation/utils.r")
 
-data = read.csv2("~/Downloads/online-retail-segmentation/custCluster/custCusterRecency.csv", 
+data = read.csv2("~/Downloads/online-retail-segmentation/custCluster/custcluster.csv", 
                  col.names = c("customerID", "prod_purchased", "basket", "revenue", "num_visits", "avg_spend", "recency"),
                  stringsAsFactors = FALSE)
 head(data, 2)
@@ -75,6 +75,10 @@ data %>%
 
 fviz_cluster(k4, data = data.scale)
 plot(data.scale, col = k4$cluster)
+
+head(data)
+data$cluster = k4$cluster
+write.csv(data, "~/Downloads/online-retail-segmentation/custCluster/Cluster.csv")
 
 # outlier points
 # customerID prod_purchased basket  revenue num_visits avg_spend cluster
