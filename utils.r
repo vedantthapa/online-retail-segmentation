@@ -1,3 +1,4 @@
+# credits: Trishla Shah (Trishla.Shah@smu.ca)
 # train kmeans for different values of k 
 multiKmeans <- function(data,lo,hi, iter)
 {
