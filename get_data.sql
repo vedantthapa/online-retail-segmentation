@@ -21,7 +21,6 @@ SELECT StockCode,
     (SELECT SUM(Quantity*UnitPrice)/SUM(Quantity)) as AVG_REVENUE
 FROM OnlineRetail
 WHERE Country='United Kingdom'
-    AND InvoiceNo != 0
     AND CustomerID != 0
 GROUP BY StockCode
 ORDER BY TOTALPRODREVENUE DESC;
