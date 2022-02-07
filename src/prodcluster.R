@@ -7,7 +7,7 @@ library(factoextra)
 source("~/Downloads/online-retail-segmentation/src/utils.r")
 
 # read data
-data = read.csv2("Downloads/online-retail-segmentation/src/prodcluster.csv",
+data = read.csv2("Downloads/online-retail-segmentation/assets/data/prodcluster.csv",
                  col.names = c("stockcode", "cust_count", "revenue", 
                                "popularity", "avg_revenue"),
                  stringsAsFactors = FALSE)

@@ -8,7 +8,7 @@ library(ggrepel)
 source("~/Downloads/online-retail-segmentation/src/utils.r")
 
 # read data
-data = read.csv2("~/Downloads/online-retail-segmentation/src/custcluster.csv", 
+data = read.csv2("~/Downloads/online-retail-segmentation/assets/data/custcluster.csv", 
                  col.names = c("customerID", "prod_purchased", "basket", 
                                "revenue", "num_visits", "avg_spend", "recency"),
                  stringsAsFactors = FALSE)
