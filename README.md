@@ -8,7 +8,7 @@ A summary of the findings is documented below:
 
 ### CUSTOMER SEGMENT
 
-|                   | Customer Share |                                                    Description                                                    |
+|    Segment        | Customer Share |                                                    Description                                                    |
 |-------------------|----------------|:-----------------------------------------------------------------------------------------------------------------:|
 | Crème de la crème |  773 (19.76%)  | High loyalty customers, visit often and purchase a wide number of products                                        |
 | The Contenders    |  1324 (33.84%) | Purchase significant amount of products, generate good revenue and have the potential of becoming loyal customers |
@@ -17,7 +17,7 @@ A summary of the findings is documented below:
 
 ### PRODUCT SEGMENT
 
-|                     | Product Share |                                               Description                                              |
+|      Segment        | Product Share |                                               Description                                              |
 |---------------------|---------------|:------------------------------------------------------------------------------------------------------:|
 | Jewel in the Crown  |  818 (22.54%) | Highest selling products, very popular and generate the most revenue                                   |
 | The Budding Artists | 1265 (34.85%) | Potentially high selling products, purchase quite often by customers and generates significant revenue |
