@@ -13,7 +13,7 @@ multiKmeans <- function(data,lo,hi, iter)
    err[,2]
 }
 
-# create detect outlier function
+# detect outlier function
 detect_outlier <- function(x) {
   Quantile1 <- quantile(x, probs=.25)
   Quantile3 <- quantile(x, probs=.75)
@@ -23,7 +23,7 @@ detect_outlier <- function(x) {
 }
 
 
-# create remove outlier function
+# remove outlier function
 remove_outlier <- function(dataframe,
                            columns=names(dataframe)) {
   for (col in columns) {
